@@ -116,7 +116,7 @@ public class ConfigViewFactory {
   }
 
   /**
-   * Instatiates given class using provided invocation handler for respective method calls.
+   * Instantiates given class using provided invocation handler for respective method calls.
    *
    * @param configViewClass Class annotated with 'ConfigView' annotation.
    * @param proxy interceptor for methods providing configuration properties.
@@ -125,7 +125,7 @@ public class ConfigViewFactory {
    */
   private static <T> T instantiateView(Class<T> configViewClass, ConfigViewProxy proxy) {
     try {
-      return new ByteBuddy(ClassFileVersion.JAVA_V8)
+      return new ByteBuddy(ClassFileVersion.JAVA_V11)
           .subclass(configViewClass)
           .method(
               ElementMatchers.isAnnotatedWith(ANNOTATION_TYPE_DESCRIPTORS::contains)
@@ -158,7 +158,9 @@ public class ConfigViewFactory {
    */
   private static ClassLoadingStrategy<ClassLoader> determineBestClassLoadingStrategy(
       Class<?> targetClass)
-      throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException,
+      throws ClassNotFoundException,
+          NoSuchMethodException,
+          InvocationTargetException,
           IllegalAccessException {
     if (ClassInjector.UsingLookup.isAvailable()) {
       Class<?> methodHandlesClass = Class.forName("java.lang.invoke.MethodHandles");

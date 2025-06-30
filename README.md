@@ -10,7 +10,7 @@ Simple tool for creating views over the [typesafe config](https://github.com/lig
 
 Lets take the following config as an example:
 
-```java
+```hocon
 myapp {
   kafka {
     brokers = ["broker1:9092", "broker2:9092", "broker3.9092"]
@@ -51,7 +51,7 @@ final MyConfigView view = ConfigViewFactory.create(MyConfigView.class, config, "
 
 To build the Config View artifacts, the following dependencies are required:
 - Git
-- Java 8
+- Java 11
 
 Building the project itself is a matter of:
 
