@@ -25,7 +25,6 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,21 +38,20 @@ class ConfigViewProxy implements InvocationHandler, Serializable {
   private static final long serialVersionUID = -8983369061952970985L;
 
   static final List<Class<? extends Annotation>> ANNOTATIONS =
-      Collections.unmodifiableList(
-          Arrays.asList(
-              ConfigView.String.class,
-              ConfigView.StringList.class,
-              ConfigView.Boolean.class,
-              ConfigView.Integer.class,
-              ConfigView.Long.class,
-              ConfigView.Double.class,
-              ConfigView.Duration.class,
-              ConfigView.Configuration.class,
-              ConfigView.View.class,
-              ConfigView.ViewList.class,
-              ConfigView.TypesafeConfig.class,
-              ConfigView.Bytes.class,
-              ConfigView.Map.class));
+      List.of(
+          ConfigView.String.class,
+          ConfigView.StringList.class,
+          ConfigView.Boolean.class,
+          ConfigView.Integer.class,
+          ConfigView.Long.class,
+          ConfigView.Double.class,
+          ConfigView.Duration.class,
+          ConfigView.Configuration.class,
+          ConfigView.View.class,
+          ConfigView.ViewList.class,
+          ConfigView.TypesafeConfig.class,
+          ConfigView.Bytes.class,
+          ConfigView.Map.class);
 
   /**
    * Unquote string (if it starts and end with a quote)
